@@ -4,8 +4,11 @@ import Loading from '../../components/Loading';
 import Title from '../../components/admin/Title';
 import { CheckIcon, DeleteIcon, StarIcon } from 'lucide-react';
 import { kConverter } from '../../lib/kConverter';
+import { useAppContext } from '../../context/appContext';
 
 const AddShows = () => {
+
+    const {axios, getToken, user} = useAppContext();
 
     const currency = import.meta.env.VITE_CURRENCY;
 
@@ -15,8 +18,15 @@ const AddShows = () => {
     const [dateTimeInput, setDateTimeInput] = useState("");
     const [showPrice, setShowPrice] = useState("");
 
-    const fetchNowPlayingMovies = () => {
-        setNowPlayingMovies(dummyShowsData);
+    const fetchNowPlayingMovies = async () => {
+        try {
+            const {data} = await axios.get('/api/show/now-playing', {headers: {Authorization: `Bearer ${await getToken()}`}});
+            if (data.success) {
+                setNowPlayingMovies(data.movies);
+            }
+        } catch (error) {
+            console.error("Error fetching movies: ", error)
+        }
     }
 
     const handleDateTimeAdd = () => {

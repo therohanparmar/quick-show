@@ -6,7 +6,7 @@ import Show from '../models/Show.js';
 export const getNowPlayingMovies = async (req, res) => {
 
     try {
-
+        console.log('ccc')
         const {data} = await axios.get(
             'https://api.themoviedb.org/3/movie/now_playing',
             {
@@ -15,7 +15,7 @@ export const getNowPlayingMovies = async (req, res) => {
         );
 
         const movies = data.results;
-
+        console.log(movies)
         res.json({success: true, movies: movies});
 
     } catch (error) {
