@@ -39,7 +39,7 @@ export const AppProvider = ({ children }) => {
         try {
             const {data} = await axios.get('/api/show/all');
             if (data.success) {
-                setShows(data.show);
+                setShows(data.shows);
             } else {
                 toast.error(data.message);
             }
