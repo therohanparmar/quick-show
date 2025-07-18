@@ -6,7 +6,6 @@ import Show from '../models/Show.js';
 export const getNowPlayingMovies = async (req, res) => {
 
     try {
-        console.log('ccc')
         const {data} = await axios.get(
             'https://api.themoviedb.org/3/movie/now_playing',
             {
@@ -15,7 +14,6 @@ export const getNowPlayingMovies = async (req, res) => {
         );
 
         const movies = data.results;
-        console.log(movies)
         res.json({success: true, movies: movies});
 
     } catch (error) {
@@ -30,7 +28,7 @@ export const addShow = async (req, res) => {
 
     try {
 
-        const {movieId, showsInput, showPrice} = req.body;
+        const {movieId, showInput, showPrice} = req.body;
 
         let movie = await Movie.findById(movieId);
 
@@ -75,7 +73,7 @@ export const addShow = async (req, res) => {
         }
 
         const showsToCreate = [];
-        showsInput.forEach(show => {
+        showInput.forEach(show => {
             const showDate = show.date;
             show.time.forEach((time) => {
                 const dateTimeString = `${showDate}T${time}`;
