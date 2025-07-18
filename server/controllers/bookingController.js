@@ -69,7 +69,7 @@ export const getOccupiedSeats = async (req, res) => {
         const {showId} = req.params;
         const showData = await Show.findById(showId);
 
-        const occupiedSeats = Object.keys(showData).occupiedSeats;
+        const occupiedSeats = Object.keys(showData.occupiedSeats);
 
         res.json({success: true, occupiedSeats});
 
