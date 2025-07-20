@@ -38,11 +38,11 @@ const ListShows = () => {
       <div className="max-w-4xl mt-6 overflow-x-auto">
         <table className="w-full border-collapse rounded-md overflow-hidden text-nowrap">
           <thead>
-            <tr class="bg-primary/20 text-left text-white">
-              <th class="p-2 font-medium pl-5">Movie Name</th>
-              <th class="p-2 font-medium">Show Time</th>
-              <th class="p-2 font-medium">Total Bookings</th>
-              <th class="p-2 font-medium">Earnings</th>
+            <tr className="bg-primary/20 text-left text-white">
+              <th className="p-2 font-medium pl-5">Movie Name</th>
+              <th className="p-2 font-medium">Show Time</th>
+              <th className="p-2 font-medium">Total Bookings</th>
+              <th className="p-2 font-medium">Earnings</th>
             </tr>
           </thead>
           <tbody className="text-sm font-light">
