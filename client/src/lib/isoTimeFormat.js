@@ -1,5 +1,7 @@
 const isoTimeFormat = (dateTime) => {
-    const date = new Date(dateTime);
+    const date = new Date(
+        new Date(dateTime).getTime() - (5.5 * 60 * 60 * 1000)
+    );
     const localTime = date.toLocaleTimeString(
         'en-US',
         {
