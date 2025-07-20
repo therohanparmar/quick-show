@@ -4,7 +4,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from 'lucide-react'
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 
-const DateSelect = ({dateTime, id}) => {
+const DateSelect = ({dateTime, id, user}) => {
 
     const [selected, setSelected] = useState(null);
 
@@ -12,7 +12,10 @@ const DateSelect = ({dateTime, id}) => {
 
     const onBookHandler = () => {
         if (!selected) {
-            return toast('Please select a date')
+          return toast('Please select a date')
+        }
+        if (!user) {
+          return toast.error('Please login to proceed');
         }
         navigate(`/movies/${id}/${selected}`);
         scrollTo(0,0);
